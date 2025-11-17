@@ -31,5 +31,5 @@ jobs:
           start: npm run start-prod
           wait-on: http://localhost:5000
       - name: Deploy to Render (Deploy Hook URL)
-        if: success()
+        if: ${{ github.event_name == 'push' }}
         run: curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
