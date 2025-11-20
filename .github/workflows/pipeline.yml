@@ -41,20 +41,19 @@ jobs:
 
       - name: Notify success
         if: ${{ env.CONDITION == 'true' && success()}}
-        uses: rjstone/discord-webhook-notify@v2
+        uses: Ilshidur/action-discord@master
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         with:
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-          username: inga-divra
-          severity: info
-          details: All tests passed!
+          args: "New version of Pokedex deployed. Commit: ${{ github.sha }}"
+
       - name: Notify failure
         if: failure()
-        uses: rjstone/discord-webhook-notify@v2
+        uses: Ilshidur/action-discord@master
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         with:
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-          username: inga-divra
-          severity: error
-          details: "Build failed! Commit: ${{ github.sha }}"
+          args: "Build failed. Commit: ${{ github.sha }}"
 
   tag_release:
     needs: [simple_deployment_pipeline]
