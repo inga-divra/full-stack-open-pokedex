@@ -1,4 +1,10 @@
+## Other repository
+
+The phonebook-app project for Part 11 is available here:
+https://github.com/inga-divra/phonebook-app-ci-cd
+
 # Full Stack open CI/CD
+
 https://full-stack-open-pokedex-aoh2.onrender.com/
 This repository is used for the CI/CD module of the Full stack open course
 
